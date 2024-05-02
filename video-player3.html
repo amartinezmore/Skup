@@ -1,0 +1,104 @@
+              <!DOCTYPE html>
+              <html lang="en">
+              <head>
+                  <meta charset="UTF-8">
+                  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                  <title>Video Player - CaseOh - Strawberry Cheesecake</title>
+                  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+                  <link rel="stylesheet" href="style.css">
+                  <style>
+                      body, h1, h3, p { font-family: 'Montserrat', sans-serif; margin: 0; padding: 0; }
+                      header { background-color: #333; color: #fff; text-align: center; padding: 10px 0; }
+                      nav { display: flex; justify-content: center; }
+                      nav button { background-color: transparent; border: none; color: #fff; cursor: pointer; font-size: 16px; margin: 0 10px; }
+                      .video-player-container { display: flex; flex-direction: column; align-items: center; margin: 20px auto; }
+                      .video-container { position: relative; overflow: hidden; width: 70%; padding-top: 39.25%; /* 16:9 Aspect Ratio */ }
+                      .video-container video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+                      .suggested-videos { width: 70%; margin-top: 20px; display: flex; justify-content: space-between; }
+                      .video { flex: 1; margin-right: 20px; }
+                      .video:last-child { margin-right: 0; }
+                      footer { background-color: #333; color: #fff; text-align: center; padding: 10px 0; width: 100%; }
+
+                      /* Popup Styles */
+                      .popup { display: none; position: fixed; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); align-items: center; justify-content: center; z-index: 1000; }
+                      .popup-content { background: white; padding: 20px; border-radius: 10px; text-align: center; }
+                      .popup-content button { margin: 10px; padding: 10px 20px; cursor: pointer; }
+                  </style>
+              </head>
+              <body>
+                  <header>
+                      <h1>SKÜP</h1>
+                      <nav>
+                          <button id="homeBtn">Home</button>
+                          <button id="questBtn">Quest</button>
+                          <button id="followingBtn">User Showcase</button>
+                          <!-- Additional buttons from the index can be replicated here -->
+                      </nav>
+                  </header>
+                  <div class="video-player-container">
+                      <div class="video-container">
+                          <video controls>
+                              <source src="Biggest SCAM ever.mp4" type="video/mp4">
+                              Your browser does not support the video tag.
+                          </video>
+                      </div>
+                      <h3>Biggest SCAM Ever</h3>
+                      <p>Views: 1609</p>
+
+                      <div class="suggested-videos">
+                          <div class="video">
+                              <a href="video-player.html">
+                                  <h3>CaseOh - Strawberry Cheesecake (Original Song)</h3>
+                                  <p>Views: 301</p>
+                              </a>
+                          </div>
+                          <div class="video">
+                              <a href="video-player2.html">
+                                  <h3>Middle Of The Night</h3>
+                                  <p>Views: 191</p>
+                              </a>
+                          </div>
+                          <!-- Additional suggested videos can be added here -->
+                      </div>
+                  </div>
+                  <footer>
+                      <p>© 2024 Team SKÜP</p>
+                  </footer>
+                  <div class="popup" id="signInPopup">
+                      <div class="popup-content">
+                          <p id="popupMessage">Sign In To Get The SKÜP!</p>
+                          <button onclick="closePopup()">Cancel</button>
+                          <button onclick="signIn()">Login</button>
+                      </div>
+                  </div>
+                  <script>
+                      document.getElementById("homeBtn").addEventListener("click", function() {
+                          window.location.href = 'index.html'; // Redirect for the Home button
+                      });
+
+                      document.getElementById("questBtn").addEventListener("click", function() {
+                          document.getElementById("popupMessage").textContent = "Sign In To Start Your Quest!";
+                          document.getElementById("signInPopup").style.display = "flex";
+                      });
+
+                      document.getElementById("followingBtn").addEventListener("click", function() {
+                          document.getElementById("popupMessage").textContent = "Sign In To Get The SKÜP!";
+                          document.getElementById("signInPopup").style.display = "flex";
+                      });
+
+                      function closePopup() {
+                          document.getElementById("signInPopup").style.display = "none";
+                      }
+
+                      function signIn() {
+                          const message = document.getElementById("popupMessage").textContent;
+                          if (message.includes("Quest")) {
+                              window.location.href = 'sign-in-quest.html'; // Redirect for the Quest popup
+                          } else {
+                              window.location.href = 'sign-in-follow.html'; // Redirect for the User Showcase popup
+                          }
+                          closePopup();
+                      }
+                  </script>
+              </body>
+              </html>
